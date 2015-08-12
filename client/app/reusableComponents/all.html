@@ -1,0 +1,181 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
+<script src="bower_components/slick-carousel/slick/slick.js"></script>
+<script src="bower_components/angular-slick/dist/slick.js"></script>
+
+
+
+<div class="row">
+    <input type="text" data-ng-model="searchText" placeholder="search by name" class="searchBox"  /></br>
+</div>
+<!--<div data-ng-repeat="category in Components | filter:searchText">-->
+<!--<label>{{category.name}}</label>-->
+<!--<div data-ng-repeat="component in category.list | filter:searchText">-->
+<!--<span>{{component.name}}</span>-->
+<!--</div>-->
+<!--</div>-->
+<div class="row typeDiv" data-ng-repeat="category in Components | filter:searchText">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 outerDiv">
+        <label class="compoLabel">{{category.name}}</label>
+        <slick centerMode="true" focusOnSelect="true" slides-to-show=3 slides-to-scroll=1 init-onload="true"
+               data="getComponents(category.name)" arrows="true" dots="false" infinite="true" prev-arrow=".left"
+               next-arrow=".right" class="responsive filtering">
+            <div class="slick-slide row componentDiv" data-ng-repeat="component in getComponents(category.name) | filter:searchText"><span class="col-md-12 componentSpan">{{ component.name }}</span></div>
+            <a href="" class="carousel-control left"></a>
+            <a href="" class="carousel-control right"></a>
+        </slick>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+<!--<div class="categories">-->
+
+<!--<ul class="cat">-->
+<!--<li class="pull-left"><h4>Filter by Type:</h4></li>-->
+<!--<li class="pull-right">-->
+<!--<ol class="categoryType">-->
+<!--<li data-ng-repeat="type in sheet.types"><a href="#" ng-click="getComponents(type)" class="active">{{type?type:'unknown'}}</a></li>-->
+<!--&lt;!&ndash;<li><a href="#" data-filter="*" class="active">All</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#" data-filter=".web">QA</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#" data-filter=".photography">Mobile</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#" data-filter=".app">Web</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#" data-filter=".branding">Ui/Ux</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#" data-filter=".app">Cloud</a></li>&ndash;&gt;-->
+<!--&lt;!&ndash;<li><a href="#" data-filter=".branding">unknown</a></li>&ndash;&gt;-->
+<!--</ol>-->
+<!--</li>-->
+<!--</ul>-->
+<!--<div class="clearfix"></div>-->
+<!--</div>-->
+<!--<div id="lightbox" class="row isotope" style="position: relative; overflow: hidden; height: 580px;">-->
+
+<!--<div data-ng-repeat="thing in ComponentsByType" ng-class={{thing.type}} class="col-sm-6 col-md-3 col-lg-3 isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>{{thing.name}}</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-sm-6 col-md-3 col-lg-3 isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>{{thing.name}}</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-6 col-md-3 col-lg-3 branding isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(584px, 0px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>ComponentsByType[0].name</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-6 col-md-3 col-lg-3 branding isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(876px, 0px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>ComponentsByType[1].name</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-6 col-md-3 col-lg-3 web isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 290px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>ComponentsByType[2].name</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-6 col-md-3 col-lg-3 app isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(292px, 290px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>ComponentsByType[3].name</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-6 col-md-3 col-lg-3 photography web isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(584px, 290px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>ComponentsByType[4].name</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="col-sm-6 col-md-3 col-lg-3 web isotope-item" style="position: absolute; left: 0px; top: 0px; transform: translate3d(876px, 290px, 0px);">-->
+<!--<div class="portfolio-item">-->
+<!--<div class="hover-bg">-->
+<!--<a href="#">-->
+<!--<div class="hover-text">-->
+<!--<h4>ComponentsByType[5].name</h4>-->
+<!--<small>Branding</small>-->
+<!--<div class="clearfix"></div>-->
+<!--<i class="fa fa-plus"></i>-->
+<!--</div>-->
+<!--<img src="assets/images/logo.png" class="img-responsive" alt="...">-->
+<!--</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+</div>

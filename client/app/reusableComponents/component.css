@@ -1,0 +1,39 @@
+.paradigm {
+    font-weight: bold;
+
+}
+
+.coe {
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top: -2%;
+}
+
+.logo {
+    border: 2px gray solid;
+    width: 15%;
+    /* float: none; */
+    text-align: center;
+    float: right;
+    margin-right: 42%;
+    margin-bottom: 2%;
+    background-color: rgb(174, 187, 228);
+    color: black;
+}
+.compSearchBox {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 40px;
+    border: 3px solid #FFC000;
+    border-radius: 10px;
+}
+.compoDiv {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 400px;
+    border: 3px solid #71AD48;
+    border-radius: 20px;
+    padding: 20px;
+}

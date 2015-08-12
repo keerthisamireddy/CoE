@@ -1,0 +1,138 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+<div id="tf-works">
+    <div class="container"> <!-- Container -->
+        <div class="space"></div>
+        <div class="categories">
+            <div id="tf-services" class="text-center">
+                <div class="container">
+                        <ol class="service type">
+                            <li data-ng-repeat="category in Components" ng-if="category.name!='Unknown'">
+                                <a href="#" ng-click="getComponents(category.name)" data-ng-class="{active: cActive === category.name}">
+                                    <i class="fa" data-ng-class="{'fa-search': 'QA' === category.name, 'fa-mobile': 'Mobile' === category.name, 'fa-globe': 'Web' === category.name, 'fa-cloud': 'Cloud' === category.name, 'fa-paint-brush': 'Ui/Ux' === category.name, 'fa-plus': 'All' === category.name}"></i>
+
+                                    <h4><strong>{{category.name}}</strong></h4>
+                                </a>
+                            </li>
+                        </ol>
+                </div>
+            </div>
+            <!--<ul class="cat">-->
+                <!--<li class="pull-right">-->
+                    <!--<ol class="type">-->
+                        <!--<li data-ng-repeat="category in Components" ng-if="category.name!='Unknown'">-->
+                            <!--<a href="#" ng-click="getComponents(category.name)" data-ng-class="{active: cActive === category.name}">{{category.name}}</a>-->
+                        <!--</li>-->
+                    <!--</ol>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <div class="clearfix"></div>
+        </div>
+        <input type="text" placeholder="Search....." data-ng-model="searchText" class="searchBox"/>
+        <div class="space"></div>
+        <div id="lightbox" class="row">
+            <div data-ng-animate="slide-right" data-ng-repeat="component in activeArray | filter:searchText" style="display: inline-block;"
+                 class="col-sm-6 col-md-3 col-lg-3">
+                <div class="portfolio-item">
+                    <div class="hover-bg">
+                        <a href="#">
+                            <div class="hover-text" ng-click="getDetails(component)">
+                                <h4>{{component.name}}</h4>
+                                <small>Branding</small>
+                                <div class="clearfix" ></div>
+                                <i class="fa fa-plus"  ></i>
+                            </div>
+                            <img src={{component.image}} class="componentDiv img-responsive center-block" alt="...">
+                            <!--<div class="componentDiv img-responsive center-block"><h4>{{component.name}}</h4></div>-->
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<dir-pagination-controls template-url="../paginationTemplate.html"></dir-pagination-controls>-->
+<div id="tf-services" class="text-center">
+    <div class="container">
+        <div class="section-title center">
+            <h2>Take a look at <strong>our components</strong></h2>
+
+            <div class="line">
+                <hr>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="space"></div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 service">
+                <i class="fa fa-search"></i>
+                <h4><strong>QA</strong></h4>
+
+                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+                    1.10.32.</p>
+            </div>
+
+            <div class="col-md-3 col-sm-6 service">
+                <i class="fa fa-mobile"></i>
+                <h4><strong>Mobile</strong></h4>
+
+                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+                    1.10.32.</p>
+            </div>
+
+            <div class="col-md-3 col-sm-6 service">
+                <i class="fa fa-globe"></i>
+                <h4><strong>Web</strong></h4>
+
+                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+                    1.10.32.</p>
+            </div>
+
+            <div class="col-md-3 col-sm-6 service">
+                <i class="fa  fa-cloud"></i>
+                <h4><strong>Cloud</strong></h4>
+
+                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+                    1.10.32.</p>
+            </div>
+            <div class="col-md-3 col-sm-6 service">
+                <i class="fa fa-paint-brush"></i>
+                <h4><strong>UI/UX</strong></h4>
+
+                <p>The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section
+                    1.10.32.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="MainCtrl">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header clearfix">
+            <h3 class="modal-title pull-left ">{{compName}}</h3>
+            <h4 class="modal-title pull-right " ng-click="ok()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></h4>
+        </div>
+        <div class="modal-body bg-success">
+            <p class="row"><span class="text-info col-sm-4"><strong>Name:</strong></span> <span class="col-sm-8">{{compName?compName:'-'}}</span></p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Written By:</strong></span>  <span class="col-sm-8"> {{compAssignedTo?compAssignedTo:'-'}}</span> </p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Status:</strong></span>  <span class="col-sm-8">{{status?status:'-'}}</span>  </p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Component Type: </strong></span> <span class="col-sm-8">{{type?type:'-'}}</span> </p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Docs URL: </strong></span><span class="col-sm-8"></span> <span class="col-sm-8">{{url?url:'-'}}</span></p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Git/SVN URL:</strong></span>  <span class="col-sm-8">{{gitsvnurl?gitsvnurl:'-'}}</span>  </p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Date of Submission:</strong></span> <span class="col-sm-8">{{submitdate?submitdate:'-'}}</span></p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Hours to Integrate:</strong></span> <span class="col-sm-8">{{hourstointegrate?hourstointegrate:'-'}}</span>  </p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Hours Saved:</strong></span> <span class="col-sm-8">{{hourssaved?hourssaved:'-'}}</span> </p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Rate it:</strong></span> <span class="col-sm-8">TBD </span></p>
+            <p class="row"><span class="text-info col-sm-4"><strong>Comments:</strong></span> <span class="col-sm-8">TBD</span></p>
+
+        </div>
+        <!--<div class="modal-footer">-->
+            <!--<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>-->
+            <!--<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>-->
+        <!--</div>-->
+    </script>
+
+
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
